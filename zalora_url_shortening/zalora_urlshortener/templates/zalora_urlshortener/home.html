@@ -1,0 +1,46 @@
+{% extends 'zalora_urlshortener/base.html' %} 
+
+{% block content %}
+
+<div class="container">
+  <div class="card mt-5">
+    <div class="card-header text-center py-3">
+      <img src="https://lh3.googleusercontent.com/proxy/gxETE9WedorPvzCk4_UWpMUY0LV5N0IH3fyYG6SZ9G05Snjel-KtyhqgiD_gM1E3hN5dXe7v5IxcmP5eY8GvFac-UPuBHCvPL082cY5QkP7luUuk1v9DlDaQLwQG1HdH7PLS5BVIKckuaOu5worvI5Zi" alt=""> 
+         <h1>Url shorten App</h1>
+    </div>
+    <div class="px-3 py-4">
+      <form action="" method="POST" class="add-form">
+        {% csrf_token %}
+        <div class="row g-1">
+          <div class="col-10">{{form.long_url}}</div>
+          <div class="col-2">
+            <button class="btn btn-info btn-lg w-100" type="submit">
+              Shorten
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {% if errors %}
+  <div class="alert alert-danger mt-4" role="alert">
+    <p>{{errors}}</p>
+  </div>
+  {% endif %}
+
+  {% if new_url %}
+
+  <div class="mx-auto text-center mt-5 shorten working">
+    <h2 class="text-success">Your long & shortened Url</h2>
+    <p><span class="text-info">Long URL:</span> {{long_url}}</p>
+    <p><span class="text-success">Short URL:</span> {{new_url}}</p>
+  </div>
+
+  <div class="input-group mb-3 shorten">
+    <div style="margin: auto">
+      {{ svg|safe }}
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock content %}
