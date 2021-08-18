@@ -28,8 +28,3 @@ class ShortenerModelTest(TestCase):
         shortener = Shortener.objects.get(id=1)
         expected_object_name = f'{shortener.short_url}, {shortener.created_at}'
         self.assertEqual(str(shortener), expected_object_name)
-
-    # def test_get_absolute_url(self):
-    #     author = Shortener.objects.get(id=1)
-    #     # This will also fail if the urlconf is not defined.
-    #     self.assertEqual(author.get_absolute_url(), '/catalog/author/1')
